@@ -99,6 +99,7 @@ describe("配列の検証", () => {
       expect(articles).toContainEqual(article1);
     });
     // arrayContaining は引数の配列要素全てが検証先の配列に含めれていればOK
+    // articles配列がarticle1とarticle3を両方含んでいることを確認する
     test("arrayContaining", () => {
       expect(articles).toEqual(expect.arrayContaining([article1, article3]));
     });
