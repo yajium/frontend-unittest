@@ -23,6 +23,7 @@ describe("四則演算", () => {
       expect(sub(70, 80)).toBe(0);
     });
     test("引数が'0〜100'の範囲外だった場合、例外をスローする", () => {
+      // 定義したRangeErrorインスタンスと等しいかで判定する
       expect(() => sub(-10, 10)).toThrow(RangeError);
       expect(() => sub(10, -10)).toThrow(RangeError);
       expect(() => sub(-10, 110)).toThrow(Error);
