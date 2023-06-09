@@ -67,6 +67,7 @@ describe("文字列の検証", () => {
     expect(str).toMatch(/世界/);
     expect(str).not.toMatch(/さようなら/);
   });
+  // オブジェクトに含まれる文字列を検証したいとき
   test("stringContaining", () => {
     expect(obj).toEqual({
       status: 200,
@@ -97,6 +98,7 @@ describe("配列の検証", () => {
     test("toContainEqual", () => {
       expect(articles).toContainEqual(article1);
     });
+    // arrayContaining は引数の配列要素全てが検証先の配列に含めれていればOK
     test("arrayContaining", () => {
       expect(articles).toEqual(expect.arrayContaining([article1, article3]));
     });
@@ -109,6 +111,8 @@ describe("オブジェクトの検証", () => {
     title: "Testing with Jest",
     author,
   };
+  // toMatchObjectは比較したいプロパティが参照先のオブジェクトに含まれていればOK
+  // 含まれていなければNG
   test("toMatchObject", () => {
     expect(author).toMatchObject({ name: "taroyamada", age: 38 });
     expect(author).toMatchObject({ name: "taroyamada" });
@@ -118,6 +122,7 @@ describe("オブジェクトの検証", () => {
     expect(author).toHaveProperty("name");
     expect(author).toHaveProperty("age");
   });
+  // objectContainingはオブジェクトの中のオブジェクトを検証したい時に使う
   test("objectContaining", () => {
     expect(article).toEqual({
       title: "Testing with Jest",
