@@ -1,5 +1,7 @@
 import { greet, sayGoodBye } from "./greet";
 
+// Web APIなど特定の状況を再現したいときなど都合の悪い依存が含まれているときは
+// モジュールをスタブ化（代用品化）することでテストを実施できる
 jest.mock("./greet", () => ({
   sayGoodBye: (name: string) => `Good bye, ${name}.`,
 }));
