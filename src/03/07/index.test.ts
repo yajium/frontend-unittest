@@ -2,6 +2,7 @@ import { timeout, wait } from ".";
 
 describe("非同期処理", () => {
   describe("wait", () => {
+    // Promiseをreturnする場合
     test("指定時間待つと、経過時間をもって resolve される", () => {
       return wait(50).then((duration) => {
         expect(duration).toBe(50);
@@ -10,6 +11,7 @@ describe("非同期処理", () => {
     test("指定時間待つと、経過時間をもって resolve される", () => {
       return expect(wait(50)).resolves.toBe(50);
     });
+    // async/awaitを使う場合
     test("指定時間待つと、経過時間をもって resolve される", async () => {
       await expect(wait(50)).resolves.toBe(50);
     });
@@ -18,6 +20,8 @@ describe("非同期処理", () => {
     });
   });
   describe("timeout", () => {
+    // rejectされることをテストする場合
+    // catchを使う場合
     test("指定時間待つと、経過時間をもって reject される", () => {
       return timeout(50).catch((duration) => {
         expect(duration).toBe(50);
@@ -32,7 +36,10 @@ describe("非同期処理", () => {
   });
 });
 
+// try-cathcを使う場合
 test("指定時間待つと、経過時間をもって reject される", async () => {
+  // アサーションの数を指定して正しい数のテストが行われているかを検証する
+  // このテストでは、1つのアサーションが行われることを期待している
   expect.assertions(1);
   try {
     await timeout(50); // timeout関数のつもりが、wait関数にしてしまった
