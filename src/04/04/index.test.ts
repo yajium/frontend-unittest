@@ -4,6 +4,9 @@ import { getMyArticlesData, httpError } from "../fetchers/fixtures";
 
 jest.mock("../fetchers");
 
+// モック生成関数
+// テストで必要なセットアップを必要最小限のパラメータで切り替え可能にしたユーティリティ関数
+// ステータスコードによるjest.spyonの切り替えが可能になる
 function mockGetMyArticles(status = 200) {
   if (status > 299) {
     return jest
@@ -16,7 +19,8 @@ function mockGetMyArticles(status = 200) {
 }
 
 test("指定したタグをもつ記事が一件もない場合、null が返る", async () => {
-  mockGetMyArticles();
+  mockGetMyArticles(); //statusに何もしていないので正常時のデータが返ってくる
+  console.log(typeof mockGetMyArticles); // function
   const data = await getMyArticleLinksByCategory("playwright");
   expect(data).toBeNull();
 });
