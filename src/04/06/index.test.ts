@@ -25,7 +25,9 @@ function mockPostMyArticle(input: ArticleInput, status = 200) {
   }
 }
 
+// 送信する値を動的に作成できるようにするファクトリー関数
 function inputFactory(input?: Partial<ArticleInput>) {
+  // デフォルトはバリデーションに通過する値を返し、引数で上書きすることでバリデーションを通過しない値も返すことができる
   return {
     tags: ["testing"],
     title: "TypeScript を使ったテストの書き方",
@@ -37,7 +39,7 @@ function inputFactory(input?: Partial<ArticleInput>) {
 test("バリデーションに成功した場合、成功レスポンスが返る", async () => {
   // バリデーションに通過する入力値を用意
   const input = inputFactory();
-  // 入力値を含んだ成功レスポンスが返るよう、モック
+  // 入力値を含んだ成功レスポンスが返るよう、モックを施す
   const mock = mockPostMyArticle(input);
   // テスト対象の関数に、input を与えて実行
   const data = await postMyArticle(input);
