@@ -3,11 +3,13 @@ import { Form } from "./Form";
 
 test("名前の表示", () => {
   render(<Form name="taro" />);
+  // screen.getByText()は一致した文字列を持つテキスト要素を1つ見つける。今回の場合pタグのDOMが取得できる
   expect(screen.getByText("taro")).toBeInTheDocument();
 });
 
 test("ボタンの表示", () => {
   render(<Form name="taro" />);
+  // 特定のDOM要素をロールで取得する
   expect(screen.getByRole("button")).toBeInTheDocument();
 });
 
