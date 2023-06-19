@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Agreement } from "./Agreement";
 
+// <legend>に表示されている文字が、<filedset>のアクセシブルネームとして引用されていることを検証する
 test("fieldset のアクセシブルネームは、legend を引用している", () => {
   render(<Agreement />);
   expect(
