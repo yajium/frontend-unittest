@@ -6,14 +6,15 @@ import { Form } from "./Form";
 const user = userEvent.setup();
 
 async function inputContactNumber(
+  // 初期値を入れておく
   inputValues = {
     name: "田中 太郎",
     phoneNumber: "000-0000-0000",
   }
 ) {
   await user.type(
-    screen.getByRole("textbox", { name: "電話番号" }),
-    inputValues.phoneNumber
+    screen.getByRole("textbox", { name: "電話番号" }), // テスト対象のフォーム要素を取得
+    inputValues.phoneNumber // テスト対象のフォーム要素に入力する値
   );
   await user.type(
     screen.getByRole("textbox", { name: "お名前" }),
