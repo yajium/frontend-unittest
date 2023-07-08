@@ -56,7 +56,7 @@ test("バリデーションエラー時「不正な入力値が含まれてい�
 
 test("不明なエラー時「不明なエラーが発生しました」が表示される", async () => {
   render(<RegisterAddress />);
-  await fillValuesAndSubmit();
+  await fillValuesAndSubmit(); // 正常なフォームデータを送信しているが、モック関数が実行されていないため不明なエラーを返す
   expect(screen.getByText("不明なエラーが発生しました")).toBeInTheDocument();
 });
 

@@ -11,6 +11,7 @@ export const RegisterAddress = () => {
       <Form
         onSubmit={handleSubmit((values) => {
           try {
+            console.log(values);
             checkPhoneNumber(values.phoneNumber);
             postMyAddress(values)
               .then(() => {
